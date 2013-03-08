@@ -1,0 +1,15 @@
+<h1>{{ story.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for picture in story.picture_set.all %}
+	<img src="{{ picture.path }} " /></a>
+{% endfor %}
+
+{% for video in story.video_set.all %}
+	<video>{{ video.path }}</video>
+{% endfor %}
+
+{% for paragraph in story.paragraph_set.all %}
+	<p>{{ paragraph.text }}</p>
+{% endfor %}

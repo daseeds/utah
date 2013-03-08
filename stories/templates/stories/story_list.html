@@ -1,0 +1,16 @@
+{% if story_list %}
+    <ul>
+    {% for story in story_list %}
+        <li><a href="{% url 'stories:detail' story.id %}">{{ story.title }} 
+		{% for picture in story.picture_set.all %}
+			{% if picture.is_main == True %}
+				<img src="{{ picture.path }} " /></a>
+			{% endif %}
+		{% endfor %}
+		
+		</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No stories are available.</p>
+{% endif %}

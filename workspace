@@ -1,0 +1,40 @@
+<NotepadPlus>
+    <Project name="Utah">
+        <Folder name="polls">
+            <Folder name="templates">
+                <Folder name="polls">
+                    <Folder name="New folder" />
+                    <File name="polls\templates\polls\detail.html" />
+                    <File name="polls\templates\polls\index.html" />
+                    <File name="polls\templates\polls\results.html" />
+                </Folder>
+            </Folder>
+            <File name="polls\admin.py" />
+            <File name="polls\models.py" />
+            <File name="polls\tests.py" />
+            <File name="polls\urls.py" />
+            <File name="polls\views.py" />
+            <File name="polls\__init__.py" />
+        </Folder>
+        <Folder name="stories">
+            <File name="stories\models.py" />
+            <File name="stories\tests.py" />
+            <File name="stories\views.py" />
+            <File name="stories\__init__.py" />
+            <File name="stories\admin.py" />
+            <File name="stories\urls.py" />
+            <Folder name="stories">
+                <File name="stories\templates\stories\story_list.html" />
+            </Folder>
+        </Folder>
+        <Folder name="utah">
+            <File name="utah\settings.py" />
+            <File name="utah\urls.py" />
+            <File name="utah\wsgi.py" />
+            <File name="utah\__init__.py" />
+            <File name="utah\__init__.pyc" />
+        </Folder>
+        <File name="database" />
+        <File name="manage.py" />
+    </Project>
+</NotepadPlus>
