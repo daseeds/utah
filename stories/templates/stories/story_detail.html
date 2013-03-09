@@ -3,7 +3,7 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {% for picture in story.picture_set.all %}
-	<img src="{{ picture.path }} " /></a>
+	<img src="/media/{{ picture.image.name }} " /></a>
 {% endfor %}
 
 {% for video in story.video_set.all %}

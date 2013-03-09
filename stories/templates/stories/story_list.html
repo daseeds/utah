@@ -1,13 +1,14 @@
 {% if story_list %}
     <ul>
     {% for story in story_list %}
-        <li><a href="{% url 'stories:detail' story.id %}">{{ story.title }} 
+        <li><div id="main-{{story.id}}">
+        	<a href="{% url 'stories:detail' story.id %}">{{ story.title }} 
 		{% for picture in story.picture_set.all %}
 			{% if picture.is_main == True %}
-				<img src="{{ picture.path }} " /></a>
+				<img src="/media/{{ picture.image.name }}"  height="40"/>
 			{% endif %}
 		{% endfor %}
-		
+			</a></div>
 		</li>
     {% endfor %}
     </ul>

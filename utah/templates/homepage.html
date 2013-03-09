@@ -6,3 +6,18 @@
 
 {% block body_class %}home{% endblock %}
 
+{% block extra_head_base %}
+    {% block extra_head %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+<div class="main page" id="listStories"></div>                  
+{% endblock %}
+
+{% block footer %}
+    {% include "_footer.html" %}
+{% endblock %}
+
+{% block extra_body_base %}
+    {% block extra_body %}{% endblock %}
+{% endblock %}

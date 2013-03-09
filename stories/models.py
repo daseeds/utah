@@ -11,13 +11,15 @@ class Story(models.Model):
 		
 class Picture(models.Model):
 	story = models.ForeignKey(Story)
-	path = models.CharField(max_length=200)
 #	path = models.ImageField()
+	image = models.FileField(upload_to="images/")
 	is_main = models.BooleanField()
+	width = models.IntegerField(blank=True, null=True)
+	height = models.IntegerField(blank=True, null=True)
 	def __unicode__(self):
-		return self.path
-	def thumbnail(self):
-		return """<a href="/media/%s"><img border="0" alt="" src="/media/%s" height="40" /></a>""" % ((self.path, self.path))
+		return self.image.name
+ 	def thumbnail(self):      
+		return """<a href="/media/%s"><img border="0" alt="" src="/media/%s" height="40" /></a>""" % ((self.image.name, self.image.name))
 	thumbnail.allow_tags = True
 
 

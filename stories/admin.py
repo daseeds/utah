@@ -26,7 +26,7 @@ class StoryAdmin(admin.ModelAdmin):
 	date_hierarchy = 'pub_date'
 
 class PictureAdmin(admin.ModelAdmin):
-	list_display = ('path', 'thumbnail', 'is_main')
+	list_display = ('image', 'thumbnail', 'is_main')
 	def save_model(self, request, obj, form, change):
 		obj.user = request.user
 		obj.save()	
