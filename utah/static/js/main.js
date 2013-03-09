@@ -47,11 +47,21 @@ var App = function (aMain) {
 	app.loadStoriesList = function() {
 		var success = function( html ) {
 				main.hide();
-				main.html(html);
+				//main.html(html);
+				
+				var row = 2;
+				var mainHeight;
+
+				for(i in html)
+				{
+					var newsection = "<section id=" + html[i].id + "><a href=" + html[i].link + "><img src=" + html[i].image + "  height='40px'/><h3>" + html[i].title + "</h3></a></section>";
+					main.append(newsection)
+				}
 				main.fadeIn(750);
+
 		  };
 
-		app.runQuery("/stories", "html", success);
+		app.runQuery("/stories/json", "json", success);
 
 	};
 

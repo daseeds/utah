@@ -1,0 +1,19 @@
+{% if story_list %}
+    [
+    {% for story in story_list %}
+    	{
+    		"id": "{{story.id}}",
+    		"link": "{% url 'stories:detail' story.id %}",
+			{% for picture in story.picture_set.all %}
+				{% if picture.is_main == True %}
+					"image": "/media/{{ picture.image.name }}",
+				{% endif %}
+			{% endfor %}
+			"title": "{{ story.title }}"
+		}
+		{% if forloop.counter < story_list|length %}
+			,
+		{% endif %}
+    {% endfor %}
+    ]
+{% endif %}

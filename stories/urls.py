@@ -8,8 +8,13 @@ urlpatterns = patterns('',
 		ListView.as_view(
 			queryset=Story.objects.filter(pub_date__lte=timezone.now).order_by('-pub_date')),
 	name='index'),
+	url(r'^json/$',         
+		ListView.as_view(
+			queryset=Story.objects.filter(pub_date__lte=timezone.now).order_by('-pub_date'),
+			template_name='stories/story_list.json'),
+	name='index'),
     # ex: /stories/5/
-    url(r'^(?P<pk>\d+)/$', 
+	url(r'^(?P<pk>\d+)/$', 
         DetailView.as_view(
             queryset=Story.objects.filter(pub_date__lte=timezone.now),
             template_name='stories/detail.html'),
