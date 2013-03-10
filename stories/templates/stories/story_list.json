@@ -7,6 +7,8 @@
 			{% for picture in story.picture_set.all %}
 				{% if picture.is_main == True %}
 					"image": "/media/{{ picture.image.name }}",
+					"width": "{{ picture.width }}",
+					"height": "{{ picture.height }}",
 				{% endif %}
 			{% endfor %}
 			"title": "{{ story.title }}"
