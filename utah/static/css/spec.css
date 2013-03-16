@@ -34,3 +34,8 @@ footer {
 	z-index: 3;
 	opacity: 100;
 }
+
+img { margin: 2px 3px 3px 2px; }
+img {
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -1px;

@@ -50,9 +50,10 @@ var App = function (aMain) {
 		var success = function( html ) {
 				mainContent = html;
 
-				main.hide();
+				//main.hide();
+				app.ImagesJsonAdd();
 				app.resize();
-				main.fadeIn(500);	
+				//main.fadeIn(500);	
 		  };
 
 		app.runQuery("/stories/json", "json", success);
@@ -70,53 +71,60 @@ var App = function (aMain) {
 		app.runQuery("/stories/" + id, "html", success);
 	};
 
-	app.resizeMain = function() {
-		
-		//main.html(html);
-		
-		var row = 3;
-		var margin = 20;
-		var mainHeight = (main.height() + margin) / row;
-		var totalWidth = 0;
-		var scaleRatio = new  Array();
 
-		var currentPaddingLeft;
-		var currentPaddingTop;
-		for(i in mainContent)
-		{
-			totalWidth += parseInt(mainContent[i].width / scaleRatio);
-			totalWidth += margin;
-		}
 
-		for(i in mainContent)
-		{
-			scaleRatio[i] = mainContent[i].height / mainHeight;
-		}
 
-		// Build rows
-		var pagginatorLeft = new  Array();
-		var pagginatorTop = new  Array();
-		currentPaddingLeft = 0;
-		currentPaddingTop = 0;
-		for(i in mainContent)
-		{
-			pagginatorLeft[i] = currentPaddingLeft;
-			pagginatorTop[i] = currentPaddingTop;
-			currentPaddingLeft += parseInt(mainContent[i].width / scaleRatio[i]) + margin;
-			if (currentPaddingLeft > main.width())
-			{
-				currentPaddingLeft = 0;
-				currentPaddingTop += mainHeight + 20;
-				pagginatorLeft[i] = currentPaddingLeft;
-				pagginatorTop[i] = currentPaddingTop;
-				currentPaddingLeft += parseInt(mainContent[i].width / scaleRatio[i]) + margin;
-			}
-			
-		}
+	HEIGHTS = [];
 
-		// remove all child before adding new list
-		main.empty();
-		// TODO: update top / left configuration instead of recreating all if exist
+	app.getheight = function (images, width) {
+	  width -= images.length * 5;
+	  var h = 0;
+	  for (var i = 0; i < images.length; ++i) {
+	    h += $(images[i]).data('width') / $(images[i]).data('height');
+	  }
+	  return width / h;
+	};
+
+	app.setheight = function (images, height) {
+	  HEIGHTS.push(height);
+	  for (var i = 0; i < images.length; ++i) {
+	    $(images[i]).css({
+	      width: height * $(images[i]).data('width') / $(images[i]).data('height'),
+	      height: height
+	    });
+	    $(images[i]).attr('src', $(images[i]).attr('src').replace(/w[0-9]+-h[0-9]+/, 'w' + $(images[i]).width() + '-h' + $(images[i]).height()));
+	  }
+	};
+
+	app.resize = function (images, width) {
+	  setheight(images, getheight(images, width));
+	};
+
+	app.run = function (max_height) {
+	  var size = main.width() - 50;
+
+	  var n = 0;
+	  var images = $('img');
+	  w: while (images.length > 0) {
+	    for (var i = 1; i < images.length + 1; ++i) {
+	      var slice = images.slice(0, i);
+	      var h = app.getheight(slice, size);
+	      if (h < max_height) {
+	        app.setheight(slice, h);
+	        n++;
+	        images = images.slice(i);
+	        continue w;
+	      }
+	    }
+	    app.setheight(slice, Math.min(max_height, h));
+	    n++;
+	    break;
+	  }
+	  console.log(n);
+	};
+
+	app.ImagesJsonAdd = function(storyId) {
+
 		for(i in mainContent)
 		{
 	//		var newsection = "<section class='story' style='position: absolute; left: "+pagginatorLeft[i]+"px; top: "+pagginatorTop[i]+"px' id=" + mainContent[i].id + ">\
@@ -125,15 +133,14 @@ var App = function (aMain) {
 	//		var section = main.append(newsection);
 
 			var link = $("<a href='#story-" + mainContent[i].id + "'></a>").appendTo(main);
-			var section = $("<section class='story' style='position: absolute; left: "+pagginatorLeft[i]+"px; top: "+pagginatorTop[i]+"px' id=" + mainContent[i].id + ">\
-			<img src=" + mainContent[i].image + "   height='"+mainHeight+"px'/>\
-			<h3>" + mainContent[i].title + "</h3></section>").appendTo(link);
+			var section = $("<img id="+ mainContent[i].id +" src=" + mainContent[i].image + " data-width="+ mainContent[i].width +" data-height="+mainContent[i].height+" />\
+			").appendTo(link);
 			var id = mainContent[i].id;
 
 			section.bind('click', function() {
 				app.storySelect($(this).attr('id'));
 			});
-		}
+		}		
 
 	};
 
@@ -147,7 +154,7 @@ var App = function (aMain) {
 	};
 
 	app.resize = function() {
-		app.resizeMain();
+		app.run(205);
 		$("footer").css({"top": main.height() + "px"});
 	};
 	// Constructor
