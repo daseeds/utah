@@ -1,18 +1,19 @@
 {% if story_list %}
-    <ul>
+    
     {% for story in story_list %}
-        <li><div id="main-{{story.id}}">
-        	<a href="{% url 'stories:detail' story.id %}">
 		{% for picture in story.picture_set.all %}
 			{% if picture.is_main == True %}
-				<img src="/media/{{ picture.image.name }}"  height="40"/>
-				<p>{{ story.title }} </p>
+	    		<section class="story" id="main-{{story.id}}"  >
+        
+        		<a href="{% url 'stories:detail' story.id %}">
+				<img class="story" src="/media/{{ picture.image.name }}" data-width="{{ picture.width }}" data-height="{{ picture.height }}"/>
+
+				<h2>{{ story.title }}</h2>
+				</a>
+				</section>
 			{% endif %}
 		{% endfor %}
-			</a></div>
-		</li>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No stories are available.</p>
 {% endif %}

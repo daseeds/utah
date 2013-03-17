@@ -46,7 +46,7 @@ var App = function (aMain) {
 		});
 	};
 
-	app.loadStoriesList = function() {
+	app.loadStoriesListJSON = function() {
 		var success = function( html ) {
 				mainContent = html;
 
@@ -57,6 +57,32 @@ var App = function (aMain) {
 		  };
 
 		app.runQuery("/stories/json", "json", success);
+	};
+
+	app.loadStoriesListHTML = function() {
+		var success = function( html ) {
+				mainContent = html;
+
+				//main.hide();
+				main.html(html);
+				app.resize();
+				//main.fadeIn(500);	
+		  };
+
+		app.runQuery("/stories", "html", success);
+	};
+
+	app.loadPerksListHTML = function() {
+		var success = function( html ) {
+				mainContent = html;
+
+				//main.hide();
+				$('div.sidebar').html(html);
+				app.resize();
+				//main.fadeIn(500);	
+		  };
+
+		app.runQuery("/perks", "html", success);
 	};
 
 	app.loadStoryDetail = function(id) {
@@ -104,7 +130,7 @@ var App = function (aMain) {
 	  var size = main.width() - 50;
 
 	  var n = 0;
-	  var images = $('img');
+	  var images = $('img.story');
 	  w: while (images.length > 0) {
 	    for (var i = 1; i < images.length + 1; ++i) {
 	      var slice = images.slice(0, i);
@@ -154,7 +180,7 @@ var App = function (aMain) {
 	};
 
 	app.resize = function() {
-		app.run(205);
+		app.run(340);
 		$("footer").css({"top": main.height() + "px"});
 	};
 	// Constructor
@@ -193,6 +219,7 @@ var initApp = function() {
 	app = new App($('div#listStories'));
 
 	window.addEventListener('resize', app.resize, false);
-	app.loadStoriesList();
+	app.loadStoriesListHTML();
+	app.loadPerksListHTML();
 }
 initApp();
