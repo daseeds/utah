@@ -1,0 +1,16 @@
+{% if perk_list %}
+{% autoescape off %}
+    {% for perk in perk_list %}
+
+		<section class="perk" id="{{perk.id}}"  >
+			<h2>{{ perk.title }}</h2>
+			{% for content in perk.content_set.all %}
+				<div>{{ content.text }}</div>
+			{% endfor %}
+		</section>
+
+    {% endfor %}
+{% endautoescape %}
+{% else %}
+    <p>No perks are available.</p>
+{% endif %}

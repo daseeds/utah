@@ -1,4 +1,4 @@
-html{color:#FFF;background:#000;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+html{color:#FFF;background:#222222;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
 
 body {
 	font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -23,16 +23,56 @@ div.main.selected{
 	z-index: 3;
 }
 
+div.sidebar {
+	position: absolute;
+	top: 20px;
+	#width: 155px;
+	right: 0px;
+	z-index: 1;
+	opacity: 1;	
+	background:-webkit-gradient(linear,left top,left bottom,from(#585858),to(#383838));
+}
+
 section.story {
+	float:left;
 	cursor: pointer;
+	margin-bottom: -25px;
+
+}
+
+section.story > a > img {
+	box-shadow: 1px 1px 1px #000;
+}
+
+section.story > a > h2 {
+	position: relative;
+	top: -50px;
+	margin-left: 20px;
+	text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+section.story > a {
+	color:#FFF;
+	text-decoration: none;
+	font-size: 200%;
+	height: 0;
+}
+
+
+section.perk > div {
+	text-align: right;
 }
 
 footer {
 	
 	position: absolute;
-	height: 20px;
+	//height: 20px;
 	z-index: 3;
 	opacity: 100;
+
+	background:-webkit-gradient(linear,left top,left bottom,from(#585858),to(#383838));
+	background:-moz-linear-gradient(top,#585858,#383838);
+	background:-ms-linear-gradient(top,#585858,#383838);
 }
 
 img { margin: 2px 3px 3px 2px; }

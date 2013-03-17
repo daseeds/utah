@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 	url(r"^$", TemplateView.as_view(template_name='homepage.html'), name="home"),
     url(r'^polls/', include('polls.urls', namespace="polls")),
 	url(r'^stories/', include('stories.urls', namespace="stories")),
+    url(r'^perks/', include('perks.urls', namespace="perks")),
 	url(r'^admin/', include(admin.site.urls)),
     # Examples:
     # url(r'^$', 'utah.views.home', name='home'),
