@@ -11,9 +11,24 @@
 {% endblock %}
 
 {% block body %}
-<div id="header">
-<a href="http://127.0.0.1" class="ui-corner-all">home</a>
-</div>
+<header>
+	<section id="global-nav">
+		<nav>
+			<ul class="projects">
+					<li class="project jquery"><a href="http://jquery.com/" title="jQuery">jQuery</a></li>
+					<li class="project" ><a href="http://plugins.jquery.com/"><img src="static/img/facebook.png" /></a></li>
+				</ul>
+			<ul class="links l_tinynav2">
+					
+					<li><a href="en">English</a></li>
+					<li><a href="fr">Francais</a></li>
+					<li><a href="zh">中文</a></li>
+				</ul>
+		</nav>
+	</section>
+	<section>title</section>
+
+</header>
 <div class="sidebar" ></div>
 <div class="main page ui-corner-all ui-widget-content" id="listStories"></div>
 <div class="main page ui-corner-all ui-widget-content" id="oneStory"></div>
