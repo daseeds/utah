@@ -16,7 +16,7 @@
 {% autoescape off %}
     {% for perk in perk_list %}
 
-		<h3 class="ui-corner-top ui-widget-header"style="margin-top: 20px;"><span class="ui-icon ui-icon-bullet" style="float: left; margin-right: .3em;"></span>{{ perk.title }}</h3>
+		<h3 class="ui-corner-top ui-widget-header ui-state-active"style="margin-top: 20px;"><span class="ui-icon ui-icon-bullet" style="float: left; margin-right: .3em;"></span>{{ perk.title }}</h3>
 		<div class="ui-widget-content ui-corner-bottom"  >
 			{% for content in perk.content_set.all %}
 				<p>{{ content.text }}</p>
