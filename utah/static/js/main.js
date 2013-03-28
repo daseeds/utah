@@ -220,7 +220,11 @@ var initApp = function() {
 	app = new App($('div#listStories'));
 
 	window.addEventListener('resize', app.resize, false);
+	
 	app.loadStoriesListHTML();
 	app.loadPerksListHTML();
 }
-initApp();
+
+$(document).ready(function() {
+  initApp();
+});
