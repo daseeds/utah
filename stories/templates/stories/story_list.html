@@ -5,7 +5,7 @@
 			{% if picture.is_main == True %}
 	    		<section class="story" id="main-{{story.id}}"  >
         
-        		<a href="{% url 'stories:detail' story.id %}">
+        		<a href="{% url 'stories:detail' story.id %}" alt="{{ story.title }}">
 				<img class="story" src="/media/{{ picture.image.name }}" data-width="{{ picture.width }}" data-height="{{ picture.height }}"/>
 
 				<h2>{{ story.title }}</h2>

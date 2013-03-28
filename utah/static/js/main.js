@@ -127,8 +127,9 @@ var App = function (aMain) {
 	};
 
 	app.run = function (max_height) {
-	  var size = main.width() - 50;
+	  var size = main.width();
 
+	  console.log("Pagination main.width()=" + main.width());
 	  var n = 0;
 	  var images = $('img.story');
 	  w: while (images.length > 0) {
@@ -181,7 +182,7 @@ var App = function (aMain) {
 
 	app.resize = function() {
 		app.run(340);
-		$("footer").css({"top": main.height() + "px"});
+		//$("footer").css({"top": main.height() + "px"});
 	};
 	// Constructor
 	(function(){
