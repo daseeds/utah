@@ -1,28 +1,36 @@
 {% if perk_list %}
-<div class="ui-widget">
-	<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
-		<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-		<strong>Hey!</strong> Sample ui-state-highlight style.</p>
-	</div>
-</div>
-<div  class=" ui-widget ">
-
-	<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-		<strong>Alert:</strong> Sample ui-state-error style.</p>
-	</div>
-</div>
-<div  class=" ui-widget ">
 {% autoescape off %}
     {% for perk in perk_list %}
 
-		<h3 class="ui-corner-top ui-widget-header ui-state-active"style="margin-top: 20px;"><span class="ui-icon ui-icon-bullet" style="float: left; margin-right: .3em;"></span>{{ perk.title }}</h3>
+		{% if perk.type == 'al' %}
+		<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+			<p style="margin-top: 11px;margin-bottom: 11px;"><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			<strong>{{ perk.title }}</strong> 			
+			{% for content in perk.content_set.all %}
+				{{ content.text }}
+			{% endfor %}
+			</p>
+		</div>
+		{% endif %}
+		{% if perk.type == 'in' %}
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+			<p style="margin-top: 11px;margin-bottom: 11px;"><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			<strong>{{ perk.title }}</strong>
+			{% for content in perk.content_set.all %}
+				{{ content.text }}
+			{% endfor %}
+			</p>
+		</div>
+		
+		{% endif %}
+		{% if perk.type == 'no' %}
+		<h3 class="ui-corner-top ui-widget-header "style="margin-top: 20px;"><span class="ui-icon ui-icon-bullet" style="float: left; margin-right: .3em;"></span>{{ perk.title }}</h3>
 		<div class="ui-widget-content ui-corner-bottom"  >
 			{% for content in perk.content_set.all %}
 				<p>{{ content.text }}</p>
 			{% endfor %}
 		</div>
-	
+		{% endif %}
 
 
     {% endfor %}
