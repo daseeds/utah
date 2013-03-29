@@ -69,7 +69,7 @@ var App = function (aMain) {
 				//main.fadeIn(500);	
 		  };
 
-		app.runQuery("/stories", "html", success);
+		app.runQuery("/stories/", "html", success);
 	};
 
 	app.loadPerksListHTML = function() {
@@ -82,7 +82,7 @@ var App = function (aMain) {
 				//main.fadeIn(500);	
 		  };
 
-		app.runQuery("/perks", "html", success);
+		app.runQuery("/perks/", "html", success);
 	};
 
 	app.loadStoryDetail = function(id) {
