@@ -7,9 +7,7 @@ body {
     padding:0;
 }
 
-header {
-	height:100px;
-}
+
 
 #global-nav {
 	background: url(../img/jq-global-nav.png) repeat-x 0 bottom #1b1b1b;
@@ -68,6 +66,50 @@ z-index: 10;
 #global-nav nav ul.projects li.project a {
 display: block;
 height: 33px;
+}
+
+section#title {
+	height: 60px;
+}
+
+.constrain {
+max-width: 1240px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+.jquery-ui #container, .jquery-ui footer {
+border-top-color: #FAA523;
+}
+
+.jquery-ui #container {
+background: #EEEEEE;
+}
+#container, footer {
+border-top: 1px solid #7ACEF4;
+}
+#logo-events {
+clear: both;
+padding-top: 25px;
+padding-bottom: 20px;
+}
+h2.logo {
+float: left;
+margin: 0;
+width: 856px;
+}
+
+.jquery-ui h2.logo a {
+width: 856px;
+background: url(../img/cooltext974533722.png) no-repeat;
+}
+
+h2.logo a {
+float: left;
+display: block;
+height: 66px;
+overflow: hidden;
+text-indent: -1000px;
 }
 
 div.main {
