@@ -165,3 +165,4 @@ pip-log.txt
 *database
 *.jpg
 settings.py
+media/images/
